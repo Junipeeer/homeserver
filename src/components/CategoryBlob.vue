@@ -56,16 +56,15 @@ export default {
 
 <style>
 .category-blob {
-  background-color: transparent;
-  border: 1px solid v-bind(bgColor);
+  box-sizing: border-box;
+  background-color: v-bind(bgColor);
+  border: 2px solid v-bind(bgColor);
   color: v-bind(textColor);
-  width: 350px;
-  height: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
   transform: translate(v-bind(xTranslate),v-bind(yTranslate));
-  transition: 0.5s ease;
+  transition: 0.7s ease;
 }
 
 .category-blob::before {
@@ -77,24 +76,42 @@ export default {
   position: absolute;
 }
 
+.category-blob::after {
+  position: absolute;
+  border-radius: 50%;
+  width: 350px;
+  height: 350px;
+  content: "";
+  box-shadow: 0px 0px 3px 3px v-bind(bgColor);
+  filter: blur(5px);
+  transition: box-shadow 0.5s ease, filter 0.5s ease;
+}
+
 .category-blob h2 {
   font-size: 3em;
   transform: rotate(v-bind(angleStr));
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
 .category-blob:hover {
   transform: translate(v-bind(xHoverTranslate),v-bind(yHoverTranslate)) scale(1.5);
+  z-index: 1;
 }
 
 .category-blob:hover h2 {
   transform: rotate(v-bind(rotDir));
+  text-shadow: 0px 0px 10px v-bind(bgColor);
 }
 
 .category-blob:hover::before {
-  border: 1px solid red;
   width: 800px;
   height: 800px;
   transform: translate(v-bind(xHoverTranslate),v-bind(yHoverTranslate));
 }
+
+.category-blob:hover::after {
+  box-shadow: 0px 0px 1px 10px v-bind(bgColor);
+  filter: blur(15px);
+}
+
 </style>

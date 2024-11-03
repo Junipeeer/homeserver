@@ -37,35 +37,45 @@ export default {
       }
     });
 
-      const viewport = document.getElementById("viewport");
-      const dotSize = 1; // Size of the dot
-      const spacing = 50; // Distance between dots
+    const viewport = document.getElementById("viewport");
+    const dotSize = 1; // Size of the main dot
+    const spacing = 50; // Distance between dots
 
-      const width = viewport.clientWidth;
-      const height = viewport.clientHeight;
-      const canvas = document.createElement('canvas');
-      canvas.width = width;
-      canvas.height = height;
-      const context = canvas.getContext('2d');
+    const width = viewport.clientWidth;
+    const height = viewport.clientHeight;
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const context = canvas.getContext('2d');
 
-      context.fillStyle = '#428670'; // Set color for dots
-      for (let x = 0; x < width; x += spacing) {
-        for (let y = 0; y < height; y += spacing) {
-          context.beginPath();
-          context.arc(x, y, dotSize, 0, Math.PI * 2);
-          context.fill();
-        }
+    context.fillStyle = '#F6F4F3'; // Set color for main dots
+
+    for (let x = 0; x < width; x += spacing) {
+      for (let y = 0; y < height; y += spacing) {
+        // Draw main dot with shadow effect
+        context.shadowColor = 'rgba(96, 165, 136, 0.5)'; // Light color for shadow with transparency
+        context.shadowBlur = 2; // Blur radius for shadow
+
+        context.beginPath();
+        context.arc(x, y, dotSize, 0, Math.PI * 2);
+        context.fill();
+
+        // Reset shadow properties
+        context.shadowColor = 'transparent';
+        context.shadowBlur = 0;
       }
+    }
 
-      viewport.style.backgroundImage = `url(${canvas.toDataURL()})`;
+    viewport.style.backgroundImage = `url(${canvas.toDataURL()})`;
   },
   methods: {
     changeViewport() {
-      let xScale = this.mousePosX / (window.innerWidth / 2) - 1;
-      let yScale = this.mousePosY / (window.innerHeight / 2) - 1;
+      let xScale = (this.mousePosX / (window.innerWidth / 2) - 1) * 1000/window.innerWidth;
+      let yScale = (this.mousePosY / (window.innerHeight / 2) - 1) * 1000/window.innerHeight;
 
-      this.viewportPosX = -100 + -20 * xScale + "%";
+      this.viewportPosX = -100 + -60 * xScale + "%";
       this.viewportPosY = -100 + -60 * yScale + "%";
+      console.log(this.viewportPosX + " " + this.viewportPosY);
     },
     addTransition(input) {
       this.mouseXPx = this.mousePosX + "px";

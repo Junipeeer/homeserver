@@ -1,9 +1,9 @@
 <template>
   <div class="blob-container">
     <CategoryBlob @click="this.emitClick('#F3A712')" title="Reading" bgColor="#F3A712" textColor="#F6F4F3" angle="72"/>
-    <CategoryBlob @click="this.emitClick('#525949')" title="Smart Home" bgColor="#525949" textColor="#F6F4F3" angle="144"/>
+    <CategoryBlob @click="this.emitClick('#26BD5B')" title="Smart Home" bgColor="#26BD5B" textColor="#F6F4F3" angle="144"/>
     <CategoryBlob @click="this.emitClick('#2589BD')" title="Tools" bgColor="#2589BD" textColor="#F6F4F3" angle="216"/>
-    <CategoryBlob @click="this.emitClick('#230903')" title="Server" bgColor="#230903" textColor="#F6F4F3" angle="288"/>
+    <CategoryBlob @click="this.emitClick('#C64191')" title="_Server" bgColor="#C64191" textColor="#F6F4F3" angle="288"/>
     <CategoryBlob @click="this.emitClick('#C03221')" title="Media" bgColor="#C03221" textColor="#F6F4F3" angle="360"/>
     <div class="blob center-blob">
       <h1>{{ type }}</h1>
@@ -38,13 +38,26 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 350px;
+  height: 350px;
+}
+
+.center-blob::after {
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+  box-shadow: 0px 0px 3px 3px #f3f6f3;
+  filter: blur(5px); 
+  width: 350px;
+  height: 350px;
 }
 
 .center-blob {
-  width: 500px;
-  height: 500px;
+  box-sizing: border-box;
   background-color: #F6F4F3;
+  border: 2px solid #F6F4F3;
   color: #212121;
+  z-index: 5;
 }
 
 .center-blob h1 {
