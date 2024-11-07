@@ -12,8 +12,8 @@ export default {
     bgColor: String,
     textColor: String,
     angle: {
-      default: "0",
-      type: String
+      default: 0,
+      type: Number
     }
   },
   data() {
@@ -25,6 +25,7 @@ export default {
     };
   },
   mounted() {
+    console.log(this.angle)
     this.resizeHandler()
     window.addEventListener("resize", this.resizeHandler);
   },

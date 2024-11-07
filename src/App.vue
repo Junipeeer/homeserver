@@ -1,12 +1,13 @@
 <template>
   <div id="transition-circle" class="transition" @click="removeTransition"></div>
   <main id="viewport">
-    <CenterBlob @clicked="addTransition" type="Welcome"/>
+    <CenterBlob @clicked="addTransition" type="Welcome" :categoryBlobs="this.blobs.category_blobs"/>
   </main>
 </template>
 
 <script>
 import CenterBlob from './components/CenterBlob.vue'
+import blobs from './assets/blobs.json'
 
 export default {
   name: 'App',
@@ -22,6 +23,7 @@ export default {
       viewportPosX: "-100%",
       viewportPosY: "-100%",
       transitionBGColor: "#fff",
+      blobs: blobs
     };
   },
   mounted() {
@@ -75,7 +77,6 @@ export default {
 
       this.viewportPosX = -100 + -60 * xScale + "%";
       this.viewportPosY = -100 + -60 * yScale + "%";
-      console.log(window.innerWidth);
     },
     addTransition(input) {
       this.mouseXPx = this.mousePosX + "px";

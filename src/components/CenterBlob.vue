@@ -1,10 +1,6 @@
 <template>
   <div class="blob-container">
-    <CategoryBlob @click="this.emitClick('#F3A712')" title="Reading" bgColor="#F3A712" textColor="#F6F4F3" angle="72"/>
-    <CategoryBlob @click="this.emitClick('#26BD5B')" title="Smart Home" bgColor="#26BD5B" textColor="#F6F4F3" angle="144"/>
-    <CategoryBlob @click="this.emitClick('#2589BD')" title="Tools" bgColor="#2589BD" textColor="#F6F4F3" angle="216"/>
-    <CategoryBlob @click="this.emitClick('#C64191')" title="_Server" bgColor="#C64191" textColor="#F6F4F3" angle="288"/>
-    <CategoryBlob @click="this.emitClick('#C03221')" title="Media" bgColor="#C03221" textColor="#F6F4F3" angle="360"/>
+    <CategoryBlob v-for="(blob, index) in Object.values(categoryBlobs)" :key="index" @click="this.emitClick(blob.bg_color)" :title="blob.title" :bgColor="blob.bg_color" :textColor="blob.text_color" :angle="(index+1) * 360/blobCount" />
     <div class="blob center-blob">
       <h1>{{ type }}</h1>
     </div>
@@ -21,11 +17,27 @@ export default {
   },
   props: {
     type: String,
-    categoryBlobs: JSON
+    categoryBlobs: Object
+  },
+  mounted () {
+    this.blobCount = Object.keys(this.categoryBlobs).length
+    for (let blob in Object.values(this.categoryBlobs)) {
+      console.log(blob)
+      console.log(Object.values(this.categoryBlobs))
+    }
   },
   methods: {
     emitClick(input) {
+      console.log(this.categoryBlobs)
       this.$emit('clicked', input)
+    },
+    recalcCircles (target) {
+      return target;
+    }
+  },
+  computed: {
+    blobCount() {
+      return Object.keys(this.categoryBlobs).length;
     }
   }
 }
@@ -38,13 +50,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30vw; aspect-ratio: 1/1;
+  width: 40vw; aspect-ratio: 1/1;
   max-width: 350px;
   min-width: 100px;
 }
 
 .blob::before, .blob::after {
-  width: 30vw; aspect-ratio: 1/1;
+  width: 40vw; aspect-ratio: 1/1;
   max-width: 350px;
 }
 
@@ -65,7 +77,7 @@ export default {
 }
 
 .center-blob h1 {
-  font-size: 5em;
+  font-size: 4.5em;
 }
 
 .blob-container {

@@ -1,0 +1,44 @@
+{
+  "category_blobs": [{
+      "title": "Reading",
+      "bg_color": "#F3A712",
+      "text_color": "#F6F4F3"
+    },
+    {
+      "title": "Smart Home",
+      "bg_color": "#26BD5B",
+      "text_color": "#F6F4F3"
+    },
+    {
+      "title": "Tools",
+      "bg_color": "#2589BD",
+      "text_color": "#F6F4F3"
+    },
+    {
+      "title": "_Server",
+      "bg_color": "#C64191",
+      "text_color": "#F6F4F3"
+    },
+    {
+      "title": "Media",
+      "bg_color": "#C03221",
+      "text_color": "#F6F4F3",
+      "site_blobs": [{
+          "title": "Smart Home",
+          "bg_color": "#26BD5B",
+          "text_color": "#F6F4F3"
+        },
+        {
+          "title": "Smart Home",
+          "bg_color": "#26BD5B",
+          "text_color": "#F6F4F3"
+        },
+        {
+          "title": "Smart Home",
+          "bg_color": "#26BD5B",
+          "text_color": "#F6F4F3"
+        }
+      ]
+    }
+  ]
+}
