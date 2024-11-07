@@ -25,11 +25,22 @@ export default {
     };
   },
   mounted() {
-    let radian = (this.angle - 90) / 180 * Math.PI;
-    this.xTranslate = 300 * Math.cos(radian) + "px";
-    this.yTranslate = 300 * Math.sin(radian) + "px";
-    this.xHoverTranslate = 400 * Math.cos(radian) + "px";
-    this.yHoverTranslate = 400 * Math.sin(radian) + "px";
+    this.resizeHandler()
+    window.addEventListener("resize", this.resizeHandler);
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.resizeHandler);
+  },
+  methods: {
+    resizeHandler () {
+      let radian = (this.angle - 90) / 180 * Math.PI;
+      let xVal = Math.min(300, 6/7 * 0.3 * window.innerWidth) * Math.cos(radian);
+      let yVal = Math.min(300, 6/7 * 0.3 * window.innerWidth) * Math.sin(radian);
+      this.xTranslate = xVal + "px";
+      this.yTranslate = yVal + "px";
+      this.xHoverTranslate = xVal * 1.25 + "px";
+      this.yHoverTranslate = yVal * 1.25 + "px";
+    }
   },
   computed: {
     angleStr () {
@@ -68,8 +79,6 @@ export default {
 }
 
 .category-blob::before {
-  width: 350px;
-  height: 350px;
   border-radius: 0;
   
   content: "";
@@ -79,8 +88,6 @@ export default {
 .category-blob::after {
   position: absolute;
   border-radius: 50%;
-  width: 350px;
-  height: 350px;
   content: "";
   box-shadow: 0px 0px 3px 3px v-bind(bgColor);
   filter: blur(5px);

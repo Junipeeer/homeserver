@@ -75,7 +75,7 @@ export default {
 
       this.viewportPosX = -100 + -60 * xScale + "%";
       this.viewportPosY = -100 + -60 * yScale + "%";
-      console.log(this.viewportPosX + " " + this.viewportPosY);
+      console.log(window.innerWidth);
     },
     addTransition(input) {
       this.mouseXPx = this.mousePosX + "px";
@@ -140,7 +140,7 @@ body,html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #f3f6f3;
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -148,7 +148,7 @@ body,html {
 
 #viewport {
   position: absolute;
-  background-color: rgb(49, 49, 49);
+  background-color: rgb(37, 37, 37);
   top: v-bind(viewportPosY);
   left: v-bind(viewportPosX);
   width: 300%;

@@ -38,8 +38,14 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 350px;
-  height: 350px;
+  width: 30vw; aspect-ratio: 1/1;
+  max-width: 350px;
+  min-width: 100px;
+}
+
+.blob::before, .blob::after {
+  width: 30vw; aspect-ratio: 1/1;
+  max-width: 350px;
 }
 
 .center-blob::after {
@@ -48,8 +54,6 @@ export default {
   content: "";
   box-shadow: 0px 0px 3px 3px #f3f6f3;
   filter: blur(5px); 
-  width: 350px;
-  height: 350px;
 }
 
 .center-blob {
