@@ -64,7 +64,6 @@ export default {
   position: absolute;
   border-radius: 50%;
   content: "";
-  box-shadow: 0px 0px 3px 3px #f3f6f3;
   filter: blur(5px); 
 }
 

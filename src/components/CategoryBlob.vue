@@ -2,6 +2,7 @@
   <div class="blob category-blob">
     <h2>{{title}}</h2>
   </div>
+  
 </template>
 
 <script>
@@ -69,6 +70,7 @@ export default {
 <style>
 .category-blob {
   box-sizing: border-box;
+  padding: 40px;
   background-color: v-bind(bgColor);
   border: 2px solid v-bind(bgColor);
   color: v-bind(textColor);
@@ -81,7 +83,6 @@ export default {
 
 .category-blob::before {
   border-radius: 0;
-  
   content: "";
   position: absolute;
 }
@@ -90,7 +91,6 @@ export default {
   position: absolute;
   border-radius: 50%;
   content: "";
-  box-shadow: 0px 0px 3px 3px v-bind(bgColor);
   filter: blur(5px);
   transition: box-shadow 0.5s ease, filter 0.5s ease;
 }
@@ -103,22 +103,20 @@ export default {
 
 .category-blob:hover {
   transform: translate(v-bind(xHoverTranslate),v-bind(yHoverTranslate)) scale(1.5);
-  z-index: 1;
 }
 
 .category-blob:hover h2 {
   transform: rotate(v-bind(rotDir));
   text-shadow: 0px 0px 10px v-bind(bgColor);
+  z-index: 1;
 }
 
 .category-blob:hover::before {
-  width: 800px;
-  height: 800px;
-  transform: translate(v-bind(xHoverTranslate),v-bind(yHoverTranslate));
+  transform: translate(v-bind(xTranslate),v-bind(yTranslate)) scale(2);
 }
 
 .category-blob:hover::after {
-  box-shadow: 0px 0px 1px 10px v-bind(bgColor);
+  box-shadow: 0px 0px 4px 5px v-bind(bgColor);
   filter: blur(15px);
 }
 
